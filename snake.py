@@ -7,13 +7,12 @@ MOVE_UNIT = 20
 starting_coordinates = [(-40, 0), (-20, 0), (0, 0)]
 
 
-
-
 class Snake:
 
     def __init__(self):
         self.segments = []
         self.create_snake()
+        self.snake_head = self.segments[0]
 
     def create_snake(self):
         for position in starting_coordinates:
@@ -28,7 +27,20 @@ class Snake:
             new_x_cor = self.segments[seg_num - 1].xcor()
             new_y_cor = self.segments[seg_num - 1].ycor()
             self.segments[seg_num].goto(new_x_cor, new_y_cor)
-        self.segments[0].forward(MOVE_UNIT)
+        self.snake_head.forward(MOVE_UNIT)
+
+    def up(self):
+        self.snake_head.setheading(90)
+
+    def down(self):
+        self.snake_head.setheading(270)
+
+    def left(self):
+        self.snake_head.setheading(180)
+
+    def right(self):
+        self.snake_head.setheading(0)
+
 
 
 
