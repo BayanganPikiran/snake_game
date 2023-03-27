@@ -3,6 +3,10 @@ from turtle import Turtle
 
 SNAKE_GREEN = "#006400"
 MOVE_UNIT = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 starting_coordinates = [(-40, 0), (-20, 0), (0, 0)]
 
@@ -30,16 +34,20 @@ class Snake:
         self.snake_head.forward(MOVE_UNIT)
 
     def up(self):
-        self.snake_head.setheading(90)
+        if self.snake_head.heading() != DOWN:
+            self.snake_head.setheading(UP)
 
     def down(self):
-        self.snake_head.setheading(270)
+        if self.snake_head.heading() != UP:
+            self.snake_head.setheading(DOWN)
 
     def left(self):
-        self.snake_head.setheading(180)
+        if self.snake_head.heading() != RIGHT:
+            self.snake_head.setheading(180)
 
     def right(self):
-        self.snake_head.setheading(0)
+        if self.snake_head.heading() != LEFT:
+            self.snake_head.setheading(RIGHT)
 
 
 
