@@ -1,6 +1,7 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from snake import Snake
 import time
+from food import Food
 
 SCREEN_GRAY = "#708090"
 SNAKE_GREEN = "#006400"
@@ -14,6 +15,7 @@ screen.title("Get A Grip On My Snake")
 screen.tracer(0)
 
 snake = Snake()
+food = Food()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -21,8 +23,8 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
-my_dick_is_big = True
-while my_dick_is_big:
+my_snake_is_long = True
+while my_snake_is_long:
     screen.update()
     time.sleep(0.2)
     snake.move()
