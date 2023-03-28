@@ -1,12 +1,16 @@
 from turtle import Screen
 from snake import Snake
-import time
 from food import Food
+from scoreboard import Scoreboard
+import time
+
 
 SCREEN_GRAY = "#708090"
 SNAKE_GREEN = "#006400"
 
 starting_coordinates = [(-40, 0), (-20, 0), (0, 0)]
+
+
 
 screen = Screen()
 screen.setup(600, 600)
@@ -14,8 +18,10 @@ screen.bgcolor(SCREEN_GRAY)
 screen.title("Get A Grip On My Snake")
 screen.tracer(0)
 
+
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -30,6 +36,8 @@ while my_snake_is_long:
     snake.move()
 
     if snake.snake_head.distance(food) < 15:
+        scoreboard.score += 1
+        scoreboard.write_score()
         food.make_new_food()
 
 
