@@ -11,6 +11,8 @@ class Food(Turtle):
         self.shapesize(stretch_wid=.5, stretch_len=.5)
         self.penup()
         self.speed("fastest")
+
+    def make_new_food(self):
         random_x = random.randint(-200, 200)
         random_y = random.randint(-200, 200)
         self.goto(random_x, random_y)

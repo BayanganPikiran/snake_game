@@ -29,6 +29,9 @@ while my_snake_is_long:
     time.sleep(0.2)
     snake.move()
 
+    if snake.snake_head.distance(food) < 15:
+        food.make_new_food()
+
 
 screen.exitonclick()
 
