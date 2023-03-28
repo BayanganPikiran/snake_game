@@ -39,12 +39,13 @@ while my_snake_is_long:
     if snake.snake_head.distance(food) < 15:
         scoreboard.score += 1
         scoreboard.write_score()
+        snake.elongate_snake()
         food.make_new_food()
 
-    if snake.snake_head.xcor() > 280 or snake.snake_head.xcor() < -280 or\
-        snake.snake_head.ycor() > 280 or snake.snake_head.ycor() < -280:
+    if snake.snake_head.xcor() > 285 or snake.snake_head.xcor() < -285 or\
+        snake.snake_head.ycor() > 285 or snake.snake_head.ycor() < -285:
         scoreboard.goto((0, 0))
-        scoreboard.write("    Your snake is puny!\nCrawl back to your cave!", align="center", font=SCORE_FONT)
+        scoreboard.game_over()
         my_snake_is_long = False
 
 
