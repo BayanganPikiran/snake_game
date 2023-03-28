@@ -4,13 +4,9 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
-
 SCREEN_GRAY = "#708090"
 SNAKE_GREEN = "#006400"
 SCORE_FONT = ("Helvetica", 20, "normal")
-
-starting_coordinates = [(-40, 0), (-20, 0), (0, 0)]
-
 
 
 screen = Screen()
@@ -18,7 +14,6 @@ screen.setup(600, 600)
 screen.bgcolor(SCREEN_GRAY)
 screen.title("Get A Grip On My Snake")
 screen.tracer(0)
-
 
 snake = Snake()
 food = Food()
@@ -36,18 +31,22 @@ while my_snake_is_long:
     time.sleep(0.2)
     snake.move()
 
-    if snake.snake_head.distance(food) < 15:
-        scoreboard.score += 1
+    if snake.head.distance(food) < 15:
         scoreboard.write_score()
         snake.elongate_snake()
         food.make_new_food()
 
-    if snake.snake_head.xcor() > 285 or snake.snake_head.xcor() < -285 or\
-        snake.snake_head.ycor() > 285 or snake.snake_head.ycor() < -285:
-        scoreboard.goto((0, 0))
+    if snake.head.xcor() > 285 or snake.head.xcor() < -285 or \
+            snake.head.ycor() > 285 or snake.head.ycor() < -285:
         scoreboard.game_over()
         my_snake_is_long = False
 
+    for segment in snake.segments:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 5:
+            my_snake_is_long = False
+            scoreboard.game_over()
 
 screen.exitonclick()
 
