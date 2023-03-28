@@ -7,6 +7,7 @@ import time
 
 SCREEN_GRAY = "#708090"
 SNAKE_GREEN = "#006400"
+SCORE_FONT = ("Helvetica", 20, "normal")
 
 starting_coordinates = [(-40, 0), (-20, 0), (0, 0)]
 
@@ -39,6 +40,12 @@ while my_snake_is_long:
         scoreboard.score += 1
         scoreboard.write_score()
         food.make_new_food()
+
+    if snake.snake_head.xcor() > 280 or snake.snake_head.xcor() < -280 or\
+        snake.snake_head.ycor() > 280 or snake.snake_head.ycor() < -280:
+        scoreboard.goto((0, 0))
+        scoreboard.write("    Your snake is puny!\nCrawl back to your cave!", align="center", font=SCORE_FONT)
+        my_snake_is_long = False
 
 
 screen.exitonclick()
